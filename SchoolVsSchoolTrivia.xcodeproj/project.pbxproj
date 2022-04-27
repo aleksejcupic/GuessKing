@@ -12,10 +12,17 @@
 		DB64F7B82819B5530027CEC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB64F7B72819B5530027CEC1 /* GoogleService-Info.plist */; };
 		DBC0575B2819B1CE009FDA7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */; };
 		DBC0575D2819B1CE009FDA7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */; };
-		DBC0575F2819B1CE009FDA7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575E2819B1CE009FDA7E /* ViewController.swift */; };
+		DBC0575F2819B1CE009FDA7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575E2819B1CE009FDA7E /* LoginViewController.swift */; };
 		DBC057622819B1CE009FDA7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC057602819B1CE009FDA7E /* Main.storyboard */; };
 		DBC057642819B1D5009FDA7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBC057632819B1D5009FDA7E /* Assets.xcassets */; };
 		DBC057672819B1D5009FDA7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC057652819B1D5009FDA7E /* LaunchScreen.storyboard */; };
+		DBD900712819E027003ED407 /* SchoolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900702819E027003ED407 /* SchoolListViewController.swift */; };
+		DBD900732819E277003ED407 /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900722819E277003ED407 /* SchoolTableViewCell.swift */; };
+		DBD900752819E733003ED407 /* MySchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900742819E733003ED407 /* MySchoolViewController.swift */; };
+		DBD900772819E776003ED407 /* SchoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900762819E776003ED407 /* SchoolDetailViewController.swift */; };
+		DBD900792819F330003ED407 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900782819F330003ED407 /* School.swift */; };
+		DBD9007B281A002C003ED407 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9007A281A002C003ED407 /* UIViewController+alert.swift */; };
+		DBD9007D281A01E1003ED407 /* Schools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9007C281A01E1003ED407 /* Schools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +34,18 @@
 		DBC057572819B1CE009FDA7E /* SchoolVsSchoolTrivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVsSchoolTrivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DBC0575E2819B1CE009FDA7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DBC0575E2819B1CE009FDA7E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBC057612819B1CE009FDA7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBC057632819B1D5009FDA7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBC057662819B1D5009FDA7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBC057682819B1D5009FDA7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBD900702819E027003ED407 /* SchoolListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolListViewController.swift; sourceTree = "<group>"; };
+		DBD900722819E277003ED407 /* SchoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolTableViewCell.swift; sourceTree = "<group>"; };
+		DBD900742819E733003ED407 /* MySchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySchoolViewController.swift; sourceTree = "<group>"; };
+		DBD900762819E776003ED407 /* SchoolDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailViewController.swift; sourceTree = "<group>"; };
+		DBD900782819F330003ED407 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		DBD9007A281A002C003ED407 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
+		DBD9007C281A01E1003ED407 /* Schools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +101,14 @@
 				DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */,
 				DB64F7B52819B4880027CEC1 /* APIKeys.swift */,
 				DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */,
-				DBC0575E2819B1CE009FDA7E /* ViewController.swift */,
+				DBD900782819F330003ED407 /* School.swift */,
+				DBD9007C281A01E1003ED407 /* Schools.swift */,
+				DBC0575E2819B1CE009FDA7E /* LoginViewController.swift */,
+				DBD900702819E027003ED407 /* SchoolListViewController.swift */,
+				DBD900722819E277003ED407 /* SchoolTableViewCell.swift */,
+				DBD900742819E733003ED407 /* MySchoolViewController.swift */,
+				DBD900762819E776003ED407 /* SchoolDetailViewController.swift */,
+				DBD9007A281A002C003ED407 /* UIViewController+alert.swift */,
 				DBC057602819B1CE009FDA7E /* Main.storyboard */,
 				DBC057632819B1D5009FDA7E /* Assets.xcassets */,
 				DBC057652819B1D5009FDA7E /* LaunchScreen.storyboard */,
@@ -231,10 +252,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBC0575F2819B1CE009FDA7E /* ViewController.swift in Sources */,
+				DBD900752819E733003ED407 /* MySchoolViewController.swift in Sources */,
+				DBC0575F2819B1CE009FDA7E /* LoginViewController.swift in Sources */,
+				DBD900772819E776003ED407 /* SchoolDetailViewController.swift in Sources */,
+				DBD900732819E277003ED407 /* SchoolTableViewCell.swift in Sources */,
+				DBD900792819F330003ED407 /* School.swift in Sources */,
 				DBC0575B2819B1CE009FDA7E /* AppDelegate.swift in Sources */,
 				DB64F7B62819B4880027CEC1 /* APIKeys.swift in Sources */,
 				DBC0575D2819B1CE009FDA7E /* SceneDelegate.swift in Sources */,
+				DBD9007D281A01E1003ED407 /* Schools.swift in Sources */,
+				DBD900712819E027003ED407 /* SchoolListViewController.swift in Sources */,
+				DBD9007B281A002C003ED407 /* UIViewController+alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
