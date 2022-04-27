@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E5DB4995200DFBA0BE06DD6 /* Pods_SchoolVsSchoolTrivia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261177F74DE775B764EDB714 /* Pods_SchoolVsSchoolTrivia.framework */; };
+		DB64F7B62819B4880027CEC1 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB64F7B52819B4880027CEC1 /* APIKeys.swift */; };
+		DB64F7B82819B5530027CEC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB64F7B72819B5530027CEC1 /* GoogleService-Info.plist */; };
 		DBC0575B2819B1CE009FDA7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */; };
 		DBC0575D2819B1CE009FDA7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */; };
 		DBC0575F2819B1CE009FDA7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575E2819B1CE009FDA7E /* ViewController.swift */; };
@@ -16,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		261177F74DE775B764EDB714 /* Pods_SchoolVsSchoolTrivia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolVsSchoolTrivia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9731C779FF3579DCF9A1DE5F /* Pods-SchoolVsSchoolTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolVsSchoolTrivia.release.xcconfig"; path = "Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia.release.xcconfig"; sourceTree = "<group>"; };
+		CDE37BCD2382A9D1994F7CB7 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolVsSchoolTrivia.debug.xcconfig"; path = "Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia.debug.xcconfig"; sourceTree = "<group>"; };
+		DB64F7B52819B4880027CEC1 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		DB64F7B72819B5530027CEC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DBC057572819B1CE009FDA7E /* SchoolVsSchoolTrivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVsSchoolTrivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E5DB4995200DFBA0BE06DD6 /* Pods_SchoolVsSchoolTrivia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C39A66D6744A07499120A46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				261177F74DE775B764EDB714 /* Pods_SchoolVsSchoolTrivia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C7629B407BEF3E3242C80511 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CDE37BCD2382A9D1994F7CB7 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */,
+				9731C779FF3579DCF9A1DE5F /* Pods-SchoolVsSchoolTrivia.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DBC0574E2819B1CE009FDA7E = {
 			isa = PBXGroup;
 			children = (
 				DBC057592819B1CE009FDA7E /* SchoolVsSchoolTrivia */,
 				DBC057582819B1CE009FDA7E /* Products */,
+				C7629B407BEF3E3242C80511 /* Pods */,
+				2C39A66D6744A07499120A46 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,12 +85,14 @@
 			isa = PBXGroup;
 			children = (
 				DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */,
+				DB64F7B52819B4880027CEC1 /* APIKeys.swift */,
 				DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */,
 				DBC0575E2819B1CE009FDA7E /* ViewController.swift */,
 				DBC057602819B1CE009FDA7E /* Main.storyboard */,
 				DBC057632819B1D5009FDA7E /* Assets.xcassets */,
 				DBC057652819B1D5009FDA7E /* LaunchScreen.storyboard */,
 				DBC057682819B1D5009FDA7E /* Info.plist */,
+				DB64F7B72819B5530027CEC1 /* GoogleService-Info.plist */,
 			);
 			path = SchoolVsSchoolTrivia;
 			sourceTree = "<group>";
@@ -74,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBC0576B2819B1D5009FDA7E /* Build configuration list for PBXNativeTarget "SchoolVsSchoolTrivia" */;
 			buildPhases = (
+				04279FD310A5969CA39C27B1 /* [CP] Check Pods Manifest.lock */,
 				DBC057532819B1CE009FDA7E /* Sources */,
 				DBC057542819B1CE009FDA7E /* Frameworks */,
 				DBC057552819B1CE009FDA7E /* Resources */,
+				9CBDBD323A1F450B3FCEA243 /* [CP] Embed Pods Frameworks */,
+				D70C6AC79DC534C6DE4D5532 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,12 +159,72 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBC057672819B1D5009FDA7E /* LaunchScreen.storyboard in Resources */,
+				DB64F7B82819B5530027CEC1 /* GoogleService-Info.plist in Resources */,
 				DBC057642819B1D5009FDA7E /* Assets.xcassets in Resources */,
 				DBC057622819B1CE009FDA7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04279FD310A5969CA39C27B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SchoolVsSchoolTrivia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CBDBD323A1F450B3FCEA243 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D70C6AC79DC534C6DE4D5532 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DBC057532819B1CE009FDA7E /* Sources */ = {
@@ -140,6 +233,7 @@
 			files = (
 				DBC0575F2819B1CE009FDA7E /* ViewController.swift in Sources */,
 				DBC0575B2819B1CE009FDA7E /* AppDelegate.swift in Sources */,
+				DB64F7B62819B4880027CEC1 /* APIKeys.swift in Sources */,
 				DBC0575D2819B1CE009FDA7E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +376,7 @@
 		};
 		DBC0576C2819B1D5009FDA7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDE37BCD2382A9D1994F7CB7 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +405,7 @@
 		};
 		DBC0576D2819B1D5009FDA7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9731C779FF3579DCF9A1DE5F /* Pods-SchoolVsSchoolTrivia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
