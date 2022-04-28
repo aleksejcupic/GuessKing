@@ -14,14 +14,14 @@ class School: NSObject, MKAnnotation {
     var address: String
     var coordinate: CLLocationCoordinate2D
     var dailyPercentage: Double
-    var overallPercentge: Double
+    var overallPercentage: Double
     var numberOfStudents: Int
     var firstUserID: String
     //var listOfStudents: [Student]
     var documentID: String
     
     var dictionary: [String: Any] {
-        return ["name": name, "address": address, "latitude": latitude, "longitude": longitude, "dailyPercentage": dailyPercentage, "overallPercentage": overallPercentge, "numberOfStudents": numberOfStudents, "firstUserID": firstUserID]
+        return ["name": name, "address": address, "latitude": latitude, "longitude": longitude, "dailyPercentage": dailyPercentage, "overallPercentage": overallPercentage, "numberOfStudents": numberOfStudents, "firstUserID": firstUserID]
     }
     
     var latitude: CLLocationDegrees {
@@ -49,7 +49,7 @@ class School: NSObject, MKAnnotation {
         self.address = address
         self.coordinate = coordinate
         self.dailyPercentage = dailyPercentage
-        self.overallPercentge = overallPercentage
+        self.overallPercentage = overallPercentage
         self.numberOfStudents = numberOfStudents
         self.firstUserID = firstUserID
         self.documentID = documentID
