@@ -7,10 +7,12 @@
 
 import Foundation
 import Firebase
+import MapKit
 
-class School {
+class School: NSObject, MKAnnotation {
     var name: String
     var address: String
+    var coordinate: CLLocationCoordinate2D
     var dailyPercentage: Double
     var overallPercentge: Double
     var numberOfStudents: Int
@@ -19,12 +21,33 @@ class School {
     var documentID: String
     
     var dictionary: [String: Any] {
-        return ["name": name, "address": address, "dailyPercentage": dailyPercentage, "overallPercentage": overallPercentge, "numberOfStudents": numberOfStudents, "firstUserID": firstUserID]
+        return ["name": name, "address": address, "latitude": latitude, "longitude": longitude, "dailyPercentage": dailyPercentage, "overallPercentage": overallPercentge, "numberOfStudents": numberOfStudents, "firstUserID": firstUserID]
     }
     
-    init(name: String, address: String, dailyPercentage: Double, overallPercentage: Double, numberOfStudents: Int, firstUserID: String, documentID: String) {
+    var latitude: CLLocationDegrees {
+        return coordinate.latitude
+    }
+    
+    var longitude: CLLocationDegrees {
+        return coordinate.longitude
+    }
+    
+    var location: CLLocation {
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
+    var title: String? {
+        return name
+    }
+    var subtitle: String? {
+        return address
+    }
+    
+    
+    init(name: String, address: String, coordinate: CLLocationCoordinate2D, dailyPercentage: Double, overallPercentage: Double, numberOfStudents: Int, firstUserID: String, documentID: String) {
         self.name = name
         self.address = address
+        self.coordinate = coordinate
         self.dailyPercentage = dailyPercentage
         self.overallPercentge = overallPercentage
         self.numberOfStudents = numberOfStudents
@@ -32,20 +55,21 @@ class School {
         self.documentID = documentID
     }
     
-    convenience init() {
-        self.init(name: "", address: "", dailyPercentage: 0, overallPercentage: 0, numberOfStudents: 0, firstUserID: "", documentID: "")
+    override convenience init() {
+        self.init(name: "", address: "", coordinate: CLLocationCoordinate2D(), dailyPercentage: 0, overallPercentage: 0, numberOfStudents: 0, firstUserID: "", documentID: "")
     }
     
     convenience init(dictionary: [String: Any]) {
         let name = dictionary["name"] as! String? ?? ""
         let address = dictionary["address"] as! String? ?? ""
-//        let latitude = dictionary["latitude"] as! CLLocationDegrees? ?? 0.0
-//        let longitude = dictionary["longitutde"] as! CLLocationDegrees? ?? 0.0
+        let latitude = dictionary["latitude"] as! Double? ?? 0.0
+        let longitude = dictionary["longitude"] as! Double? ?? 0.0
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let dailyPercentage = dictionary["dailyPercentage"] as! Double? ?? 0.0
         let overallPercentage = dictionary["overallPercentage"] as! Double? ?? 0.0
         let numberOfStudents = dictionary["numberOfStudents"] as! Int? ?? 0
         let firstUserID = dictionary["firstUserID"] as! String? ?? ""
-        self.init(name: name, address: address, dailyPercentage: dailyPercentage, overallPercentage: overallPercentage, numberOfStudents: numberOfStudents, firstUserID: firstUserID, documentID: "")
+        self.init(name: name, address: address, coordinate: coordinate, dailyPercentage: dailyPercentage, overallPercentage: overallPercentage, numberOfStudents: numberOfStudents, firstUserID: firstUserID, documentID: "")
     }
     
     func saveData(completion: @escaping (Bool) -> ()) {

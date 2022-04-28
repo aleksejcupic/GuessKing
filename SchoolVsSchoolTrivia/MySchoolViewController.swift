@@ -7,14 +7,17 @@
 
 import UIKit
 import GooglePlaces
+import MapKit
 
 class MySchoolViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var dailyLabel: UILabel!
     @IBOutlet weak var overallLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     var school: School!
+    let regionDistance: CLLocationDegrees = 750.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +25,25 @@ class MySchoolViewController: UIViewController {
         if school == nil {
             school = School()
         }
+        setupMapView()
+        updateUserInterface()
     }
     
-    func updateUserInterface() { // update when we arrive with new data
-        nameTextField.text = school.name // ERROR FOR NOW
-        addressTextField.text = school.address // ERROR FOR NOW
+    func setupMapView() {
+        let region = MKCoordinateRegion(center: school.coordinate, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    func updateUserInterface() {
+        nameTextField.text = school.name
+        addressTextField.text = school.address
+        updateMap()
+    }
+    
+    func updateMap() {
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotation(school)
+        mapView.setCenter(school.coordinate, animated: true)
     }
     
     func updateFromInterface() { // update before saving data
@@ -70,12 +87,9 @@ extension MySchoolViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name)")
-        print("Place ID: \(place.placeID)")
-        print("Place attributions: \(place.attributions)")
         school.name = place.name ?? "Unknown Place"
         school.address = place.formattedAddress ?? "Unknown Address"
-        print("Coordinates = \(place.coordinate)")
+        school.coordinate = place.coordinate
         updateUserInterface()
         dismiss(animated: true, completion: nil)
     }
