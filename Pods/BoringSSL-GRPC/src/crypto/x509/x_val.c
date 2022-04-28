@@ -60,8 +60,6 @@
 #include <openssl_grpc/asn1t.h>
 #include <openssl_grpc/x509.h>
 
-#include "internal.h"
-
 
 ASN1_SEQUENCE(X509_VAL) = {
         ASN1_SIMPLE(X509_VAL, notBefore, ASN1_TIME),

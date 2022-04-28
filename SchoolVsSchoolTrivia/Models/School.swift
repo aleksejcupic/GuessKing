@@ -17,11 +17,11 @@ class School: NSObject, MKAnnotation {
     var overallPercentage: Double
     var numberOfStudents: Int
     var firstUserID: String
-    //var listOfStudents: [Student]
+    var students: Students
     var documentID: String
     
     var dictionary: [String: Any] {
-        return ["name": name, "address": address, "latitude": latitude, "longitude": longitude, "dailyPercentage": dailyPercentage, "overallPercentage": overallPercentage, "numberOfStudents": numberOfStudents, "firstUserID": firstUserID]
+        return ["name": name, "address": address, "latitude": latitude, "longitude": longitude, "dailyPercentage": dailyPercentage, "overallPercentage": overallPercentage, "numberOfStudents": numberOfStudents, "firstUserID": firstUserID, "students": students]
     }
     
     var latitude: CLLocationDegrees {
@@ -44,7 +44,7 @@ class School: NSObject, MKAnnotation {
     }
     
     
-    init(name: String, address: String, coordinate: CLLocationCoordinate2D, dailyPercentage: Double, overallPercentage: Double, numberOfStudents: Int, firstUserID: String, documentID: String) {
+    init(name: String, address: String, coordinate: CLLocationCoordinate2D, dailyPercentage: Double, overallPercentage: Double, numberOfStudents: Int, firstUserID: String, students: Students, documentID: String) {
         self.name = name
         self.address = address
         self.coordinate = coordinate
@@ -52,11 +52,12 @@ class School: NSObject, MKAnnotation {
         self.overallPercentage = overallPercentage
         self.numberOfStudents = numberOfStudents
         self.firstUserID = firstUserID
+        self.students = students
         self.documentID = documentID
     }
     
     override convenience init() {
-        self.init(name: "", address: "", coordinate: CLLocationCoordinate2D(), dailyPercentage: 0, overallPercentage: 0, numberOfStudents: 0, firstUserID: "", documentID: "")
+        self.init(name: "", address: "", coordinate: CLLocationCoordinate2D(), dailyPercentage: 0, overallPercentage: 0, numberOfStudents: 0, firstUserID: "", students: Students(), documentID: "")
     }
     
     convenience init(dictionary: [String: Any]) {
@@ -69,7 +70,8 @@ class School: NSObject, MKAnnotation {
         let overallPercentage = dictionary["overallPercentage"] as! Double? ?? 0.0
         let numberOfStudents = dictionary["numberOfStudents"] as! Int? ?? 0
         let firstUserID = dictionary["firstUserID"] as! String? ?? ""
-        self.init(name: name, address: address, coordinate: coordinate, dailyPercentage: dailyPercentage, overallPercentage: overallPercentage, numberOfStudents: numberOfStudents, firstUserID: firstUserID, documentID: "")
+        let students = dictionary["students"] as! Students
+        self.init(name: name, address: address, coordinate: coordinate, dailyPercentage: dailyPercentage, overallPercentage: overallPercentage, numberOfStudents: numberOfStudents, firstUserID: firstUserID, students: students, documentID: "")
     }
     
     func saveData(completion: @escaping (Bool) -> ()) {
@@ -107,7 +109,7 @@ class School: NSObject, MKAnnotation {
         }
     }
     
-    func updateDailyPercentage(completed: @escaping() -> ()) {
+    func updatePercentages(completed: @escaping() -> ()) {
         let db = Firestore.firestore()
         let studentsRef = db.collection("schools").document(documentID).collection("students")
         // get all students
@@ -117,13 +119,17 @@ class School: NSObject, MKAnnotation {
                 return completed()
             }
             var dailyTotal = 0.0
+            var overallTotal = 0.0
             for document in querySnapshot!.documents {
                 let studentDictionary = document.data()
-                let daily = Double(studentDictionary["dailyCorrect"] as! Int? ?? 0) / 5.0 // reads in rating for each review
+                let daily = Double(studentDictionary["dailyCorrect"] as! Int? ?? 0) / 5.0
                 dailyTotal += daily
+                let overall = Double(studentDictionary["OverallCorrect"] as! Int? ?? 0) / 5.0
+                overallTotal += overall
             }
             self.dailyPercentage = dailyTotal / Double(querySnapshot!.count)
-            self.numberOfStudents = querySnapShot!.count
+            self.overallPercentage = overallTotal / Double(querySnapshot!.count)
+            self.numberOfStudents = querySnapshot!.count
             let dataToSave = self.dictionary
             let schoolRef = db.collection("schools").document(self.documentID)
             schoolRef.setData(dataToSave) { (error) in
@@ -132,37 +138,6 @@ class School: NSObject, MKAnnotation {
                     completed()
                 } else {
                     print("new daily percentage \(self.dailyPercentage)")
-                    completed()
-                }
-            }
-        }
-    }
-    
-    func updateOverallPercentage(completed: @escaping() -> ()) {
-        let db = Firestore.firestore()
-        let studentsRef = db.collection("schools").document(documentID).collection("students")
-        // get all students
-        studentsRef.getDocuments { (querySnapshot, error) in
-            guard error == nil else {
-                print("ERROR: failed to get query snapshot of students for studentsRef \(studentsRef)")
-                return completed()
-            }
-            var overallTotal = 0.0
-            for document in querySnapshot!.documents {
-                let studentDictionary = document.data()
-                let overall = Double(studentDictionary["OverallCorrect"] as! Int? ?? 0) / 5.0 // reads in rating for each review
-                overallTotal += overall
-            }
-            self.overallPercentage = overallTotal / Double(querySnapshot!.count)
-            self.numberOfStudents = querySnapShot!.count
-            let dataToSave = self.dictionary
-            let schoolRef = db.collection("schools").document(self.documentID)
-            schoolRef.setData(dataToSave) { (error) in
-                if let error = error {
-                    print("ERROR: updating document \(self.documentID) in school \(error.localizedDescription)")
-                    completed()
-                } else {
-                    print("new daily percentage \(self.overallPercentage)")
                     completed()
                 }
             }

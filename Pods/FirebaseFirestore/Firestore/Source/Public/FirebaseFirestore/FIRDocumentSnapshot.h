@@ -48,11 +48,11 @@ typedef NS_ENUM(NSInteger, FIRServerTimestampBehavior) {
 } NS_SWIFT_NAME(ServerTimestampBehavior);
 
 /**
- * A `DocumentSnapshot` contains data read from a document in your Firestore database. The data
+ * A `FIRDocumentSnapshot` contains data read from a document in your Firestore database. The data
  * can be extracted with the `data` property or by using subscript syntax to access a specific
  * field.
  *
- * For a `DocumentSnapshot` that points to a non-existing document, any data access will return
+ * For a `FIRDocumentSnapshot` that points to a non-existing document, any data access will return
  * `nil`. You can use the `exists` property to explicitly verify a documents existence.
  */
 NS_SWIFT_NAME(DocumentSnapshot)
@@ -65,23 +65,23 @@ NS_SWIFT_NAME(DocumentSnapshot)
 /** True if the document exists. */
 @property(nonatomic, assign, readonly) BOOL exists;
 
-/** A `DocumentReference` to the document location. */
+/** A `FIRDocumentReference` to the document location. */
 @property(nonatomic, strong, readonly) FIRDocumentReference *reference;
 
-/** The ID of the document for which this `DocumentSnapshot` contains data. */
+/** The ID of the document for which this `FIRDocumentSnapshot` contains data. */
 @property(nonatomic, copy, readonly) NSString *documentID;
 
 /** Metadata about this snapshot concerning its source and if it has local modifications. */
 @property(nonatomic, strong, readonly) FIRSnapshotMetadata *metadata;
 
 /**
- * Retrieves all fields in the document as a `Dictionary`. Returns `nil` if the document doesn't
+ * Retrieves all fields in the document as an `NSDictionary`. Returns `nil` if the document doesn't
  * exist.
  *
  * Server-provided timestamps that have not yet been set to their final value will be returned as
- * `NSNull`. You can use the `data(with:)` method to configure this behavior.
+ * `NSNull`. You can use `dataWithServerTimestampBehavior()` to configure this behavior.
  *
- * @return A `Dictionary` containing all fields in the document or `nil` if the document doesn't
+ * @return An `NSDictionary` containing all fields in the document or `nil` if the document doesn't
  *     exist.
  */
 - (nullable NSDictionary<NSString *, id> *)data;
@@ -102,7 +102,7 @@ NS_SWIFT_NAME(DocumentSnapshot)
  * Retrieves a specific field from the document. Returns `nil` if the document or the field doesn't
  * exist.
  *
- * The timestamps that have not yet been set to their final value will be returned as `NSNull`. You
+ * The timestamps that have not yet been set to their final value will be returned as `NSNull`. The
  * can use `get(_:serverTimestampBehavior:)` to configure this behavior.
  *
  * @param field The field to retrieve.
@@ -114,7 +114,7 @@ NS_SWIFT_NAME(DocumentSnapshot)
  * Retrieves a specific field from the document. Returns `nil` if the document or the field doesn't
  * exist.
  *
- * The timestamps that have not yet been set to their final value will be returned as `NSNull`. You
+ * The timestamps that have not yet been set to their final value will be returned as `NSNull`. The
  * can use `get(_:serverTimestampBehavior:)` to configure this behavior.
  *
  * @param field The field to retrieve.
@@ -140,11 +140,11 @@ NS_SWIFT_NAME(DocumentSnapshot)
 @end
 
 /**
- * A `QueryDocumentSnapshot` contains data read from a document in your Firestore database as
+ * A `FIRQueryDocumentSnapshot` contains data read from a document in your Firestore database as
  * part of a query. The document is guaranteed to exist and its data can be extracted with the
  * `data` property or by using subscript syntax to access a specific field.
  *
- * A `QueryDocumentSnapshot` offers the same API surface as a `DocumentSnapshot`. As
+ * A `FIRQueryDocumentSnapshot` offers the same API surface as a `FIRDocumentSnapshot`. As
  * deleted documents are not returned from queries, its `exists` property will always be true and
  * `data:` will never return `nil`.
  */
@@ -156,12 +156,12 @@ NS_SWIFT_NAME(QueryDocumentSnapshot)
     __attribute__((unavailable("FIRQueryDocumentSnapshot cannot be created directly.")));
 
 /**
- * Retrieves all fields in the document as a `Dictionary`.
+ * Retrieves all fields in the document as an `NSDictionary`.
  *
  * Server-provided timestamps that have not yet been set to their final value will be returned as
- * `NSNull`. You can use the `data(with:)` method to configure this behavior.
+ * `NSNull`. You can use `dataWithServerTimestampBehavior()` to configure this behavior.
  *
- * @return A `Dictionary` containing all fields in the document.
+ * @return An `NSDictionary` containing all fields in the document.
  */
 - (NSDictionary<NSString *, id> *)data;
 

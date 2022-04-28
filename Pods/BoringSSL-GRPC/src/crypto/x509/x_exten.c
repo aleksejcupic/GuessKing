@@ -59,8 +59,6 @@
 #include <openssl_grpc/cipher.h>
 #include <openssl_grpc/x509.h>
 
-#include "internal.h"
-
 
 ASN1_SEQUENCE(X509_EXTENSION) = {
         ASN1_SIMPLE(X509_EXTENSION, object, ASN1_OBJECT),

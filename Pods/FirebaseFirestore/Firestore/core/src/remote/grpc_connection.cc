@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google LLC
+ * Copyright 2018 Google
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,15 @@
 
 #include "Firestore/core/src/remote/grpc_connection.h"
 
-#include <cstdlib>
-
 #include <algorithm>
+#include <cstdlib>
 #include <mutex>  // NOLINT(build/c++11)
 #include <string>
 #include <utility>
 
 #include "Firestore/core/include/firebase/firestore/firestore_errors.h"
 #include "Firestore/core/include/firebase/firestore/firestore_version.h"
-#include "Firestore/core/src/credentials/auth_token.h"
+#include "Firestore/core/src/auth/token.h"
 #include "Firestore/core/src/model/database_id.h"
 #include "Firestore/core/src/remote/firebase_metadata_provider.h"
 #include "Firestore/core/src/remote/grpc_root_certificate_finder.h"
@@ -46,10 +45,9 @@ SUPPRESS_END()
 namespace firebase {
 namespace firestore {
 namespace remote {
-namespace {
 
+using auth::Token;
 using core::DatabaseInfo;
-using credentials::AuthToken;
 using model::DatabaseId;
 using util::Filesystem;
 using util::Path;
@@ -57,11 +55,11 @@ using util::Status;
 using util::StatusOr;
 using util::StringFormat;
 
-const char* const kAppCheckHeader = "x-firebase-appcheck";
+namespace {
+
 const char* const kAuthorizationHeader = "authorization";
 const char* const kXGoogApiClientHeader = "x-goog-api-client";
 const char* const kGoogleCloudResourcePrefix = "google-cloud-resource-prefix";
-const char* const kXGoogRequestParams = "x-goog-request-params";
 
 std::string MakeString(absl::string_view view) {
   return view.data() ? std::string{view.data(), view.size()} : std::string{};
@@ -74,40 +72,10 @@ std::shared_ptr<grpc::ChannelCredentials> CreateSslCredentials(
   return grpc::SslCredentials(options);
 }
 
-class HostConfig {
-  using Guard = std::lock_guard<std::mutex>;
-
- public:
-  void set_certificate_path(const Path& new_value) {
-    Guard guard(mutex_);
-    certificate_path_ = new_value;
-  }
-  Path certificate_path() const {
-    Guard guard(mutex_);
-    return certificate_path_;
-  }
-  void set_target_name(const std::string& new_value) {
-    Guard guard(mutex_);
-    target_name_ = new_value;
-  }
-  std::string target_name() const {
-    Guard guard(mutex_);
-    return target_name_;
-  }
-  void set_use_insecure_channel(bool new_value) {
-    Guard guard(mutex_);
-    use_insecure_channel_ = new_value;
-  }
-  bool use_insecure_channel() const {
-    Guard guard(mutex_);
-    return use_insecure_channel_;
-  }
-
- private:
-  mutable std::mutex mutex_;
-  Path certificate_path_;
-  std::string target_name_;
-  bool use_insecure_channel_ = false;
+struct HostConfig {
+  util::Path certificate_path;
+  std::string target_name;
+  bool use_insecure_channel = false;
 };
 
 class HostConfigMap {
@@ -139,8 +107,8 @@ class HostConfigMap {
 
     Guard guard(mutex_);
     HostConfig& host_config = map_[host];
-    host_config.set_certificate_path(certificate_path);
-    host_config.set_target_name(target_name);
+    host_config.certificate_path = certificate_path;
+    host_config.target_name = target_name;
   }
 
   void UseInsecureChannel(const std::string& host) {
@@ -148,7 +116,7 @@ class HostConfigMap {
 
     Guard guard(mutex_);
     HostConfig& host_config = map_[host];
-    host_config.set_use_insecure_channel(true);
+    host_config.use_insecure_channel = true;
   }
 
  private:
@@ -157,8 +125,8 @@ class HostConfigMap {
 };
 
 HostConfigMap& Config() {
-  static auto* config_by_host = new HostConfigMap();
-  return *config_by_host;
+  static HostConfigMap config_by_host;
+  return config_by_host;
 }
 
 std::string GetCppLanguageToken() {
@@ -191,7 +159,7 @@ class ClientLanguageToken {
     value_ = std::move(value);
   }
 
-  std::string Get() const {
+  const std::string& Get() const {
     Guard guard(mutex_);
     return value_;
   }
@@ -202,8 +170,8 @@ class ClientLanguageToken {
 };
 
 ClientLanguageToken& LanguageToken() {
-  static auto* token = new ClientLanguageToken();
-  return *token;
+  static ClientLanguageToken token;
+  return token;
 }
 
 void AddCloudApiHeader(grpc::ClientContext& context) {
@@ -254,17 +222,14 @@ void GrpcConnection::Shutdown() {
 }
 
 std::unique_ptr<grpc::ClientContext> GrpcConnection::CreateContext(
-    const AuthToken& auth_token, const std::string& app_check_token) const {
-  auto context = absl::make_unique<grpc::ClientContext>();
+    const Token& credential) const {
+  absl::string_view token = credential.user().is_authenticated()
+                                ? credential.token()
+                                : absl::string_view{};
 
-  absl::string_view auth = auth_token.user().is_authenticated()
-                               ? auth_token.token()
-                               : absl::string_view{};
-  if (auth.data()) {
-    context->AddMetadata(kAuthorizationHeader, absl::StrCat("Bearer ", auth));
-  }
-  if (!app_check_token.empty()) {
-    context->AddMetadata(kAppCheckHeader, app_check_token);
+  auto context = absl::make_unique<grpc::ClientContext>();
+  if (token.data()) {
+    context->AddMetadata(kAuthorizationHeader, absl::StrCat("Bearer ", token));
   }
 
   AddCloudApiHeader(*context);
@@ -273,13 +238,7 @@ std::unique_ptr<grpc::ClientContext> GrpcConnection::CreateContext(
   // This header is used to improve routing and project isolation by the
   // backend.
   const DatabaseId& db_id = database_info_->database_id();
-  // TODO(b/199767712): We are keeping this until Emulators can be released with
-  // this cl/428820046. Currently blocked because Emulators are now built with
-  // Java 11 from Google3.
   context->AddMetadata(kGoogleCloudResourcePrefix,
-                       StringFormat("projects/%s/databases/%s",
-                                    db_id.project_id(), db_id.database_id()));
-  context->AddMetadata(kXGoogRequestParams,
                        StringFormat("projects/%s/databases/%s",
                                     db_id.project_id(), db_id.database_id()));
   return context;
@@ -313,15 +272,15 @@ std::shared_ptr<grpc::Channel> GrpcConnection::CreateChannel() const {
   }
 
   // For the case when `Settings.set_ssl_enabled(false)`.
-  if (host_config->use_insecure_channel()) {
+  if (host_config->use_insecure_channel) {
     return grpc::CreateCustomChannel(host, grpc::InsecureChannelCredentials(),
                                      args);
   }
 
   // For tests only
   auto* fs = Filesystem::Default();
-  args.SetSslTargetNameOverride(host_config->target_name());
-  Path path = host_config->certificate_path();
+  args.SetSslTargetNameOverride(host_config->target_name);
+  Path path = host_config->certificate_path;
   StatusOr<std::string> test_certificate = fs->ReadFile(path);
   HARD_ASSERT(test_certificate.ok(),
               StringFormat("Unable to open root certificates at file path %s",
@@ -334,12 +293,11 @@ std::shared_ptr<grpc::Channel> GrpcConnection::CreateChannel() const {
 
 std::unique_ptr<GrpcStream> GrpcConnection::CreateStream(
     absl::string_view rpc_name,
-    const AuthToken& auth_token,
-    const std::string& app_check_token,
+    const Token& token,
     GrpcStreamObserver* observer) {
   EnsureActiveStub();
 
-  auto context = CreateContext(auth_token, app_check_token);
+  auto context = CreateContext(token);
   auto call =
       grpc_stub_->PrepareCall(context.get(), MakeString(rpc_name), grpc_queue_);
   return absl::make_unique<GrpcStream>(std::move(context), std::move(call),
@@ -348,12 +306,11 @@ std::unique_ptr<GrpcStream> GrpcConnection::CreateStream(
 
 std::unique_ptr<GrpcUnaryCall> GrpcConnection::CreateUnaryCall(
     absl::string_view rpc_name,
-    const AuthToken& auth_token,
-    const std::string& app_check_token,
+    const Token& token,
     const grpc::ByteBuffer& message) {
   EnsureActiveStub();
 
-  auto context = CreateContext(auth_token, app_check_token);
+  auto context = CreateContext(token);
   auto call = grpc_stub_->PrepareUnaryCall(context.get(), MakeString(rpc_name),
                                            message, grpc_queue_);
   return absl::make_unique<GrpcUnaryCall>(std::move(context), std::move(call),
@@ -362,12 +319,11 @@ std::unique_ptr<GrpcUnaryCall> GrpcConnection::CreateUnaryCall(
 
 std::unique_ptr<GrpcStreamingReader> GrpcConnection::CreateStreamingReader(
     absl::string_view rpc_name,
-    const AuthToken& auth_token,
-    const std::string& app_check_token,
+    const Token& token,
     const grpc::ByteBuffer& message) {
   EnsureActiveStub();
 
-  auto context = CreateContext(auth_token, app_check_token);
+  auto context = CreateContext(token);
   auto call =
       grpc_stub_->PrepareCall(context.get(), MakeString(rpc_name), grpc_queue_);
   return absl::make_unique<GrpcStreamingReader>(

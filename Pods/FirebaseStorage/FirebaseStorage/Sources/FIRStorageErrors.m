@@ -113,9 +113,7 @@
 
   errorDictionary[NSLocalizedDescriptionKey] = errorMessage;
 
-  NSError *err = [NSError errorWithDomain:FIRStorageErrorDomainInternal
-                                     code:code
-                                 userInfo:errorDictionary];
+  NSError *err = [NSError errorWithDomain:FIRStorageErrorDomain code:code userInfo:errorDictionary];
   return err;
 }
 
@@ -184,7 +182,7 @@
 }
 
 + (NSError *)errorWithCustomMessage:(NSString *)errorMessage {
-  return [NSError errorWithDomain:FIRStorageErrorDomainInternal
+  return [NSError errorWithDomain:FIRStorageErrorDomain
                              code:FIRStorageErrorCodeUnknown
                          userInfo:@{NSLocalizedDescriptionKey : errorMessage}];
 }

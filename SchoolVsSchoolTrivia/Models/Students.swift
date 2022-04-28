@@ -14,10 +14,10 @@ class Students {
     var db: Firestore!
     
     init() {
-        db.Firestore.firestore!
+        db = Firestore.firestore!
     }
     
-    func loadData(school: School, completed @escaping () ->()) {
+    func loadData(school: School, completed: @escaping () ->()) {
         guard school.documentID != "" else {
             return
         }

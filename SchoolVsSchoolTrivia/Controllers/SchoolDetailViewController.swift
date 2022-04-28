@@ -23,12 +23,13 @@ class SchoolDetailViewController: UIViewController {
     let regionDistance: CLLocationDegrees = 750.0
     var locationManager: CLLocationManager!
     
-    var students: [Student]
+    var students: Students!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        students = Students()
         getLocation()
         setupMapView()
         self.sortBasedOnSegmentPressed()
@@ -150,7 +151,7 @@ extension SchoolDetailViewController: CLLocationManagerDelegate {
 
 extension SchoolDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return students.studentArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

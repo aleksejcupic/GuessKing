@@ -25,7 +25,7 @@ class MyStuffViewController: UIViewController {
     let regionDistance: CLLocationDegrees = 750.0
     var locationManager: CLLocationManager!
     
-    var students: [String] = ["Aleksej", "Cupic"]
+    var students: [Student] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +76,7 @@ class MyStuffViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         updateFromInterface()
-        student.saveData(school: School) { (success) in
+        student.saveData(school: school) { (success) in
             if success {
                 self.leaveViewOCntroller()
             } else {

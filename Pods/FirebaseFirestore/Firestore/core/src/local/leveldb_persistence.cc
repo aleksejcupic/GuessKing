@@ -19,8 +19,8 @@
 #include <limits>
 #include <utility>
 
+#include "Firestore/core/src/auth/user.h"
 #include "Firestore/core/src/core/database_info.h"
-#include "Firestore/core/src/credentials/user.h"
 #include "Firestore/core/src/local/leveldb_key.h"
 #include "Firestore/core/src/local/leveldb_lru_reference_delegate.h"
 #include "Firestore/core/src/local/leveldb_migrations.h"
@@ -42,7 +42,7 @@ namespace firestore {
 namespace local {
 namespace {
 
-using credentials::User;
+using auth::User;
 using leveldb::DB;
 using model::ListenSequenceNumber;
 using util::Filesystem;
@@ -89,7 +89,7 @@ StatusOr<std::unique_ptr<LevelDbPersistence>> LevelDbPersistence::Create(
   if (!created.ok()) return created.status();
 
   std::unique_ptr<DB> db = std::move(created).ValueOrDie();
-  LevelDbMigrations::RunMigrations(db.get(), serializer);
+  LevelDbMigrations::RunMigrations(db.get());
 
   LevelDbTransaction transaction(db.get(), "Start LevelDB");
   std::set<std::string> users = CollectUserSet(&transaction);
@@ -114,9 +114,9 @@ LevelDbPersistence::LevelDbPersistence(std::unique_ptr<leveldb::DB> db,
   target_cache_ = absl::make_unique<LevelDbTargetCache>(this, &serializer_);
   document_cache_ =
       absl::make_unique<LevelDbRemoteDocumentCache>(this, &serializer_);
+  index_manager_ = absl::make_unique<LevelDbIndexManager>(this);
   reference_delegate_ =
       absl::make_unique<LevelDbLruReferenceDelegate>(this, lru_params);
-  bundle_cache_ = absl::make_unique<LevelDbBundleCache>(this, &serializer_);
 
   // TODO(gsoltis): set up a leveldb transaction for these operations.
   target_cache_->Start();
@@ -196,9 +196,7 @@ StatusOr<int64_t> LevelDbPersistence::CalculateByteSize() {
     int64_t file_size = maybe_size.ValueOrDie();
     count += file_size;
 
-    auto max_signed_value =
-        static_cast<uint64_t>(std::numeric_limits<int64_t>::max());
-    if (count < old_count || count > max_signed_value) {
+    if (count < old_count || count > std::numeric_limits<int64_t>::max()) {
       return Status(Error::kErrorOutOfRange,
                     "Failed to size LevelDB: count overflowed");
     }
@@ -224,11 +222,11 @@ void LevelDbPersistence::Shutdown() {
   db_.reset();
 }
 
-LevelDbMutationQueue* LevelDbPersistence::GetMutationQueue(
-    const credentials::User& user, IndexManager* manager) {
+LevelDbMutationQueue* LevelDbPersistence::GetMutationQueueForUser(
+    const auth::User& user) {
   users_.insert(user.uid());
-  current_mutation_queue_ = absl::make_unique<LevelDbMutationQueue>(
-      user, this, dynamic_cast<LevelDbIndexManager*>(manager), &serializer_);
+  current_mutation_queue_ =
+      absl::make_unique<LevelDbMutationQueue>(user, this, &serializer_);
   return current_mutation_queue_.get();
 }
 
@@ -240,28 +238,12 @@ LevelDbRemoteDocumentCache* LevelDbPersistence::remote_document_cache() {
   return document_cache_.get();
 }
 
-LevelDbIndexManager* LevelDbPersistence::GetIndexManager(
-    const credentials::User& user) {
-  users_.insert(user.uid());
-  index_manager_ =
-      absl::make_unique<LevelDbIndexManager>(user, this, &serializer_);
+LevelDbIndexManager* LevelDbPersistence::index_manager() {
   return index_manager_.get();
 }
 
 LevelDbLruReferenceDelegate* LevelDbPersistence::reference_delegate() {
   return reference_delegate_.get();
-}
-
-LevelDbBundleCache* LevelDbPersistence::bundle_cache() {
-  return bundle_cache_.get();
-}
-
-LevelDbDocumentOverlayCache* LevelDbPersistence::GetDocumentOverlayCache(
-    const User& user) {
-  users_.insert(user.uid());
-  current_document_overlay_cache_ =
-      absl::make_unique<LevelDbDocumentOverlayCache>(user, this, &serializer_);
-  return current_document_overlay_cache_.get();
 }
 
 void LevelDbPersistence::RunInternal(absl::string_view label,

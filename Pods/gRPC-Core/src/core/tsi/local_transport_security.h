@@ -30,6 +30,12 @@
 #define TSI_LOCAL_PROCESS_ID_PEER_PROPERTY "process_id"
 
 /**
+ * Main struct for local TSI handshaker. All APIs in the header are
+ * thread-comptabile.
+ */
+typedef struct local_tsi_handshaker local_tsi_handshaker;
+
+/**
  * This method creates a local TSI handshaker instance.
  *
  * - is_client: boolean value indicating if the handshaker is used at the client
@@ -39,12 +45,7 @@
  *   method.
  *
  * It returns TSI_OK on success and an error status code on failure.
- *
- * This handshaker is also being used as a minimalist handshaker for insecure
- * security connector. If this handshaker ever needs to do anything more that
- * does not fit with an insecure connector, we would need to add a separate
- * handshaker for insecure connectors.
  */
-tsi_result tsi_local_handshaker_create(bool is_client, tsi_handshaker** self);
+tsi_result local_tsi_handshaker_create(bool is_client, tsi_handshaker** self);
 
 #endif /* GRPC_CORE_TSI_LOCAL_TRANSPORT_SECURITY_H */

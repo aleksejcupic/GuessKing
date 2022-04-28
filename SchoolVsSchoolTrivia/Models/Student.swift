@@ -47,12 +47,12 @@ class Student {
         let timeIntervalDate = dictionary["dateCreated"] as! TimeInterval? ?? TimeInterval()
         let userSince = Date(timeIntervalSince1970: timeIntervalDate)
         let gamesPlayed = dictionary["gamesPlayed"] as! Int? ?? 0
-        let dailyCorrent = dictionary["dailyCorrect"] as! Int? ?? 0
+        let dailyCorrect = dictionary["dailyCorrect"] as! Int? ?? 0
         let overallCorrect = dictionary["overallCorrect"] as! Double? ?? 0.0
         let games = dictionary["games"] as! [Date: Int]? ?? [Date(): 0]
         let userID = dictionary["userID"] as! String? ?? ""
         let documentID = dictionary["documentID"] as! String? ?? ""
-        self.init(name: name, enail: email, userSince: userSince, gamesPlayed: gamesPlayed, dailyCorrent: dailyCorrent, overallCorrect: overallCorrect, games: games, userID: userID, documentID: documentID)
+        self.init(name: name, email: email, userSince: userSince, gamesPlayed: gamesPlayed, dailyCorrect: dailyCorrect, overallCorrect: overallCorrect, games: games, userID: userID, documentID: documentID)
     }
     
     func saveData(school: School, completion: @escaping (Bool) -> ()) {
@@ -96,11 +96,10 @@ class Student {
             }
             guard document?.exists == false else {
                 print("document for user \(self.documentID) exists")
-                return copletion(true)
-                
+                return completion(true)
             }
             let dataToSave: [String: Any] = self.dictionary
-            db.collection("schools").document(school.documentID).collection("students").setData(dataToSave) { (error) in
+            db.collection("schools").document(school.documentID).collection("students").document(self.documentID).setData(dataToSave) { (error) in
                 guard error == nil else {
                     print("ERROR: \(error!.localizedDescription) could not save data for \(self.documentID)")
                     return completion(false)
