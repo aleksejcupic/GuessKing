@@ -32,5 +32,9 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App needs device location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App needs device location</string>
 </dict>
 </plist>

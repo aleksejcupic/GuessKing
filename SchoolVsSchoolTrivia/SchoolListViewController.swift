@@ -22,9 +22,10 @@ class SchoolListViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         schools.loadData {
+            self.sortBasedOnSegmentPressed()
             self.tableView.reloadData()
         }
     }
@@ -35,6 +36,24 @@ class SchoolListViewController: UIViewController {
             let selectedIndexPath = tableView.indexPathForSelectedRow!
             destination.school = schools.schoolArray[selectedIndexPath.row]
         }
+    }
+    
+    func sortBasedOnSegmentPressed() {
+        switch sortSegmentedControl.selectedSegmentIndex {
+        case 0:
+            print("TODO")
+        case 1:
+            print("TODO")
+        case 2:
+            print("TODO")
+        default:
+            print("ERROR")
+        }
+        tableView.reloadData()
+    }
+    
+    @IBAction func sortSegmentPressed(_ sender: UISegmentedControl) {
+        sortBasedOnSegmentPressed()
     }
 }
 

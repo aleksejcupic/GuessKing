@@ -135,6 +135,9 @@
                                     <segment title="Daily %"/>
                                     <segment title="Overall %"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sortSegmentPressed:" destination="rtM-xQ-dfR" eventType="valueChanged" id="jhP-Ju-pJU"/>
+                                </connections>
                             </segmentedControl>
                         </barButtonItem>
                     </toolbarItems>
@@ -504,8 +507,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tnc-Om-a2G"/>
-        <segue reference="MzV-JN-xtv"/>
+        <segue reference="vMz-48-cdW"/>
+        <segue reference="UdG-wp-r23"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
