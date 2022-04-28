@@ -1,5 +1,5 @@
 //
-//  MySchoolViewController.swift
+//  SchoolDetailViewController.swift
 //  SchoolVsSchoolTrivia
 //
 //  Created by Aleksej Cupic on 4/27/22.
@@ -10,24 +10,28 @@ import GooglePlaces
 import MapKit
 import Contacts
 
-class MySchoolViewController: UIViewController {
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var dailyLabel: UILabel!
-    @IBOutlet weak var overallLabel: UILabel!
+class SchoolDetailViewController: UIViewController {
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var dailyPercentageLabel: UILabel!
+    @IBOutlet weak var overallPercentageLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sortSegmentedControl: UISegmentedControl!
     
     var school: School!
     let regionDistance: CLLocationDegrees = 750.0
     var locationManager: CLLocationManager!
     
+    var students: [Student]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if school == nil {
-            school = School()
-        }
+        tableView.delegate = self
+        tableView.dataSource = self
+        getLocation()
         setupMapView()
+        self.sortBasedOnSegmentPressed()
         updateUserInterface()
     }
     
@@ -36,79 +40,34 @@ class MySchoolViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
     
-    func updateUserInterface() {
-        nameTextField.text = school.name
-        addressTextField.text = school.address
-        updateMap()
-    }
-    
     func updateMap() {
         mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(school)
-        mapView.setCenter(school.coordinate, animated: true)
+        mapView.setCenter(school.coordinate, animated: false)
     }
     
-    func updateFromInterface() { // update before saving data
-        school.name = nameTextField.text!
-        school.address = addressTextField.text!
+    func updateUserInterface() {
+        nameLabel.text = school.name
+        addressLabel.text = school.address
+        updateMap()
     }
     
-    func leaveViewOCntroller() {
-        let isPresenting = presentingViewController is UINavigationController
-        if isPresenting {
-            dismiss(animated: true, completion: nil)
-        } else {
-            navigationController?.popViewController(animated: true)
+    func sortBasedOnSegmentPressed() {
+        switch sortSegmentedControl.selectedSegmentIndex {
+        case 0: // student name
+            students.studentArray.sort(by: {$0.name > $1.name})
+        case 1: // daily correct
+            students.studentArray.sort(by: {$0.dailyCorrect > $1.dailyCorrect})
+        case 2: // overall correct
+            students.studentArray.sort(by: {$0.overallCorrect < $1.overallCorrect})
+        default:
+            print("ERROR")
         }
-    }
-    
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        updateFromInterface()
-        school.saveData { (success) in
-            if success {
-                self.leaveViewOCntroller()
-            } else {
-                self.oneButtonAlert(title: "Save Failed", message: "Data could not save to the cloud")
-            }
-        }
-    }
-    
-    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        leaveViewOCntroller()
-    }
-    @IBAction func lookupButtonPressed(_ sender: UIBarButtonItem) {
-        let autocompleteController = GMSAutocompleteViewController()
-        autocompleteController.delegate = self
-        
-        // Display the autocomplete view controller.
-        present(autocompleteController, animated: true, completion: nil)
+        tableView.reloadData()
     }
 }
 
-extension MySchoolViewController: GMSAutocompleteViewControllerDelegate {
-    
-    // Handle the user's selection.
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        school.name = place.name ?? "Unknown Place"
-        school.address = place.formattedAddress ?? "Unknown Address"
-        school.coordinate = place.coordinate
-        updateUserInterface()
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        // TODO: handle the error.
-        print("Error: ", error.localizedDescription)
-    }
-    
-    // User canceled the operation.
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-}
-
-
-extension MySchoolViewController: CLLocationManagerDelegate {
+extension SchoolDetailViewController: CLLocationManagerDelegate {
     func getLocation() {
         // Creating a CLLocationManager will automatically check authorization
         locationManager = CLLocationManager()
@@ -186,5 +145,16 @@ extension MySchoolViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR: \(error.localizedDescription). Failed to get device location.")
+    }
+}
+
+extension SchoolDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return students.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath)
+        return cell
     }
 }

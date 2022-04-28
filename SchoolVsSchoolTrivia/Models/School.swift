@@ -106,4 +106,66 @@ class School: NSObject, MKAnnotation {
             }
         }
     }
+    
+    func updateDailyPercentage(completed: @escaping() -> ()) {
+        let db = Firestore.firestore()
+        let studentsRef = db.collection("schools").document(documentID).collection("students")
+        // get all students
+        studentsRef.getDocuments { (querySnapshot, error) in
+            guard error == nil else {
+                print("ERROR: failed to get query snapshot of students for studentsRef \(studentsRef)")
+                return completed()
+            }
+            var dailyTotal = 0.0
+            for document in querySnapshot!.documents {
+                let studentDictionary = document.data()
+                let daily = Double(studentDictionary["dailyCorrect"] as! Int? ?? 0) / 5.0 // reads in rating for each review
+                dailyTotal += daily
+            }
+            self.dailyPercentage = dailyTotal / Double(querySnapshot!.count)
+            self.numberOfStudents = querySnapShot!.count
+            let dataToSave = self.dictionary
+            let schoolRef = db.collection("schools").document(self.documentID)
+            schoolRef.setData(dataToSave) { (error) in
+                if let error = error {
+                    print("ERROR: updating document \(self.documentID) in school \(error.localizedDescription)")
+                    completed()
+                } else {
+                    print("new daily percentage \(self.dailyPercentage)")
+                    completed()
+                }
+            }
+        }
+    }
+    
+    func updateOverallPercentage(completed: @escaping() -> ()) {
+        let db = Firestore.firestore()
+        let studentsRef = db.collection("schools").document(documentID).collection("students")
+        // get all students
+        studentsRef.getDocuments { (querySnapshot, error) in
+            guard error == nil else {
+                print("ERROR: failed to get query snapshot of students for studentsRef \(studentsRef)")
+                return completed()
+            }
+            var overallTotal = 0.0
+            for document in querySnapshot!.documents {
+                let studentDictionary = document.data()
+                let overall = Double(studentDictionary["OverallCorrect"] as! Int? ?? 0) / 5.0 // reads in rating for each review
+                overallTotal += overall
+            }
+            self.overallPercentage = overallTotal / Double(querySnapshot!.count)
+            self.numberOfStudents = querySnapShot!.count
+            let dataToSave = self.dictionary
+            let schoolRef = db.collection("schools").document(self.documentID)
+            schoolRef.setData(dataToSave) { (error) in
+                if let error = error {
+                    print("ERROR: updating document \(self.documentID) in school \(error.localizedDescription)")
+                    completed()
+                } else {
+                    print("new daily percentage \(self.overallPercentage)")
+                    completed()
+                }
+            }
+        }
+    }
 }
