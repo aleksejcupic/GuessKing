@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E5DB4995200DFBA0BE06DD6 /* Pods_SchoolVsSchoolTrivia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261177F74DE775B764EDB714 /* Pods_SchoolVsSchoolTrivia.framework */; };
+		75C7B1BDFA837CF2B0A4B9E9 /* Pods_SchoolVsSchoolTrivia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B9239F4646987D178F5025 /* Pods_SchoolVsSchoolTrivia.framework */; };
 		DB64F7B62819B4880027CEC1 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB64F7B52819B4880027CEC1 /* APIKeys.swift */; };
 		DB64F7B82819B5530027CEC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB64F7B72819B5530027CEC1 /* GoogleService-Info.plist */; };
+		DB7340B2281C74BA007DACC3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B1281C74BA007DACC3 /* User.swift */; };
+		DB7340B4281C788D007DACC3 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B3281C788D007DACC3 /* Users.swift */; };
+		DB7340B7281C7ADA007DACC3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B6281C7ADA007DACC3 /* Game.swift */; };
+		DB7340B9281C7B15007DACC3 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B8281C7B15007DACC3 /* Games.swift */; };
 		DBC0575B2819B1CE009FDA7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */; };
 		DBC0575D2819B1CE009FDA7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */; };
 		DBC0575F2819B1CE009FDA7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575E2819B1CE009FDA7E /* LoginViewController.swift */; };
@@ -28,11 +32,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		261177F74DE775B764EDB714 /* Pods_SchoolVsSchoolTrivia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolVsSchoolTrivia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9731C779FF3579DCF9A1DE5F /* Pods-SchoolVsSchoolTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolVsSchoolTrivia.release.xcconfig"; path = "Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia.release.xcconfig"; sourceTree = "<group>"; };
-		CDE37BCD2382A9D1994F7CB7 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolVsSchoolTrivia.debug.xcconfig"; path = "Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia.debug.xcconfig"; sourceTree = "<group>"; };
+		63C9A66CDC79B65C7334F724 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolVsSchoolTrivia.debug.xcconfig"; path = "Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia.debug.xcconfig"; sourceTree = "<group>"; };
+		97B9239F4646987D178F5025 /* Pods_SchoolVsSchoolTrivia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolVsSchoolTrivia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB64F7B52819B4880027CEC1 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		DB64F7B72819B5530027CEC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DB7340B1281C74BA007DACC3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DB7340B3281C788D007DACC3 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		DB7340B6281C7ADA007DACC3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		DB7340B8281C7B15007DACC3 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 		DBC057572819B1CE009FDA7E /* SchoolVsSchoolTrivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVsSchoolTrivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +57,7 @@
 		DBD9007C281A01E1003ED407 /* Schools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schools.swift; sourceTree = "<group>"; };
 		DBD9007E281ADEA8003ED407 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		DBD90080281AE3AD003ED407 /* Students.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Students.swift; sourceTree = "<group>"; };
+		F7AB5538E29D70D610E1904A /* Pods-SchoolVsSchoolTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolVsSchoolTrivia.release.xcconfig"; path = "Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,17 +65,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E5DB4995200DFBA0BE06DD6 /* Pods_SchoolVsSchoolTrivia.framework in Frameworks */,
+				75C7B1BDFA837CF2B0A4B9E9 /* Pods_SchoolVsSchoolTrivia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C39A66D6744A07499120A46 /* Frameworks */ = {
+		4DCC5FAEEE9D71B7C3E62B9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				261177F74DE775B764EDB714 /* Pods_SchoolVsSchoolTrivia.framework */,
+				97B9239F4646987D178F5025 /* Pods_SchoolVsSchoolTrivia.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -75,8 +83,8 @@
 		C7629B407BEF3E3242C80511 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CDE37BCD2382A9D1994F7CB7 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */,
-				9731C779FF3579DCF9A1DE5F /* Pods-SchoolVsSchoolTrivia.release.xcconfig */,
+				63C9A66CDC79B65C7334F724 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */,
+				F7AB5538E29D70D610E1904A /* Pods-SchoolVsSchoolTrivia.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -87,7 +95,7 @@
 				DBC057592819B1CE009FDA7E /* SchoolVsSchoolTrivia */,
 				DBC057582819B1CE009FDA7E /* Products */,
 				C7629B407BEF3E3242C80511 /* Pods */,
-				2C39A66D6744A07499120A46 /* Frameworks */,
+				4DCC5FAEEE9D71B7C3E62B9C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +133,10 @@
 				DBD9007C281A01E1003ED407 /* Schools.swift */,
 				DBD9007E281ADEA8003ED407 /* Student.swift */,
 				DBD90080281AE3AD003ED407 /* Students.swift */,
+				DB7340B1281C74BA007DACC3 /* User.swift */,
+				DB7340B3281C788D007DACC3 /* Users.swift */,
+				DB7340B6281C7ADA007DACC3 /* Game.swift */,
+				DB7340B8281C7B15007DACC3 /* Games.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,12 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DBC0576B2819B1D5009FDA7E /* Build configuration list for PBXNativeTarget "SchoolVsSchoolTrivia" */;
 			buildPhases = (
-				04279FD310A5969CA39C27B1 /* [CP] Check Pods Manifest.lock */,
+				ACEB69F5E4B8F13E67E0353A /* [CP] Check Pods Manifest.lock */,
 				DBC057532819B1CE009FDA7E /* Sources */,
 				DBC057542819B1CE009FDA7E /* Frameworks */,
 				DBC057552819B1CE009FDA7E /* Resources */,
-				9CBDBD323A1F450B3FCEA243 /* [CP] Embed Pods Frameworks */,
-				D70C6AC79DC534C6DE4D5532 /* [CP] Copy Pods Resources */,
+				2E3DDE903986EBCA9A4091E4 /* [CP] Embed Pods Frameworks */,
+				FB23140D2C32C5B518B9B26D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -227,7 +239,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		04279FD310A5969CA39C27B1 /* [CP] Check Pods Manifest.lock */ = {
+		2E3DDE903986EBCA9A4091E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACEB69F5E4B8F13E67E0353A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -249,24 +278,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9CBDBD323A1F450B3FCEA243 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D70C6AC79DC534C6DE4D5532 /* [CP] Copy Pods Resources */ = {
+		FB23140D2C32C5B518B9B26D /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -296,13 +308,17 @@
 				DBD900772819E776003ED407 /* SchoolDetailViewController.swift in Sources */,
 				DBD900732819E277003ED407 /* SchoolTableViewCell.swift in Sources */,
 				DBD900792819F330003ED407 /* School.swift in Sources */,
+				DB7340B2281C74BA007DACC3 /* User.swift in Sources */,
+				DB7340B4281C788D007DACC3 /* Users.swift in Sources */,
 				DBC0575B2819B1CE009FDA7E /* AppDelegate.swift in Sources */,
+				DB7340B9281C7B15007DACC3 /* Games.swift in Sources */,
 				DB64F7B62819B4880027CEC1 /* APIKeys.swift in Sources */,
 				DBD9007F281ADEA8003ED407 /* Student.swift in Sources */,
 				DBC0575D2819B1CE009FDA7E /* SceneDelegate.swift in Sources */,
 				DBD9007D281A01E1003ED407 /* Schools.swift in Sources */,
 				DBD900712819E027003ED407 /* SchoolListViewController.swift in Sources */,
 				DBD9007B281A002C003ED407 /* UIViewController+alert.swift in Sources */,
+				DB7340B7281C7ADA007DACC3 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +460,7 @@
 		};
 		DBC0576C2819B1D5009FDA7E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDE37BCD2382A9D1994F7CB7 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */;
+			baseConfigurationReference = 63C9A66CDC79B65C7334F724 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -458,6 +474,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,13 +484,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		DBC0576D2819B1D5009FDA7E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9731C779FF3579DCF9A1DE5F /* Pods-SchoolVsSchoolTrivia.release.xcconfig */;
+			baseConfigurationReference = F7AB5538E29D70D610E1904A /* Pods-SchoolVsSchoolTrivia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -487,6 +504,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,7 +514,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

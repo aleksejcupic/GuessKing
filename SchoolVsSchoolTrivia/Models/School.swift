@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 import MapKit
 
 class School: NSObject, MKAnnotation {
@@ -70,7 +71,7 @@ class School: NSObject, MKAnnotation {
         let overallPercentage = dictionary["overallPercentage"] as! Double? ?? 0.0
         let numberOfStudents = dictionary["numberOfStudents"] as! Int? ?? 0
         let firstUserID = dictionary["firstUserID"] as! String? ?? ""
-        let students = dictionary["students"] as! Students
+        let students = dictionary["students"] as! Students? ?? Students()
         self.init(name: name, address: address, coordinate: coordinate, dailyPercentage: dailyPercentage, overallPercentage: overallPercentage, numberOfStudents: numberOfStudents, firstUserID: firstUserID, students: students, documentID: "")
     }
     

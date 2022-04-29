@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 class Students {
     var studentArray: [Student] = []
@@ -14,7 +15,7 @@ class Students {
     var db: Firestore!
     
     init() {
-        db = Firestore.firestore!
+        db = Firestore.firestore()
     }
     
     func loadData(school: School, completed: @escaping () ->()) {

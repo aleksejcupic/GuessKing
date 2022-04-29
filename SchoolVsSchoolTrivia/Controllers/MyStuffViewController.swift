@@ -13,8 +13,8 @@ import Contacts
 class MyStuffViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var overallLabel: UILabel!
-    @IBOutlet weak var schoolNameTextField: UITextField!
-    @IBOutlet weak var addressTextField: UITextField!
+    @IBOutlet weak var addressField: UITextField!
+    @IBOutlet weak var schoolSearch: UISearchBar!
     @IBOutlet weak var schoolDailyLabel: UILabel!
     @IBOutlet weak var schoolOverallLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -24,8 +24,8 @@ class MyStuffViewController: UIViewController {
     var school: School!
     let regionDistance: CLLocationDegrees = 750.0
     var locationManager: CLLocationManager!
-    
-    var students: [Student] = []
+
+    var students: Students
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,12 @@ class MyStuffViewController: UIViewController {
         }
         setupMapView()
         updateUserInterface()
+        var students = updateSchool()
+    }
+    
+    func updateSchool() -> Students {
+        var students = school.students
+        return students
     }
     
     func setupMapView() {
@@ -44,8 +50,8 @@ class MyStuffViewController: UIViewController {
     }
     
     func updateUserInterface() {
-        schoolNameTextField.text = school.name
-        addressTextField.text = school.address
+        schoolSearch.text = school.name
+        addressField.text = school.address
         updateMap()
     }
     
@@ -56,8 +62,8 @@ class MyStuffViewController: UIViewController {
     }
     
     func updateFromInterface() { // update before saving data
-        school.name = schoolNameTextField.text!
-        school.address = addressTextField.text!
+        school.name = schoolSearch.text!
+        school.address = addressField.text!
     }
     
     func leaveViewOCntroller() {
@@ -76,13 +82,6 @@ class MyStuffViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         updateFromInterface()
-        student.saveData(school: school) { (success) in
-            if success {
-                self.leaveViewOCntroller()
-            } else {
-                print("ERROR")
-            }
-        }
         school.saveData { (success) in
             if success {
                 self.leaveViewOCntroller()
@@ -210,7 +209,7 @@ extension MyStuffViewController: CLLocationManagerDelegate {
 
 extension MyStuffViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return students.count
+        return school.numberOfStudents
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

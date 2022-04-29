@@ -488,14 +488,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Address" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-LE-lsj">
-                                            <rect key="frame" x="8" y="74" width="398" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="90L-ng-Pe9"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
                                         <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bz4-Id-oVa">
                                             <rect key="frame" x="0.0" y="114" width="414" height="228"/>
                                         </mapView>
@@ -529,6 +521,14 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Address" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SCa-LE-lsj">
+                                            <rect key="frame" x="8" y="80" width="398" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="90L-ng-Pe9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
@@ -623,7 +623,7 @@
                                 <action selector="doneButtonPressed:" destination="dza-az-2e9" id="IJg-Hw-Z4U"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="3b0-XT-sGK">
+                        <barButtonItem key="rightBarButtonItem" title="Join School" id="3b0-XT-sGK">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="dza-az-2e9" id="atR-3s-oBv"/>
                             </connections>
@@ -631,13 +631,13 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addressTextField" destination="SCa-LE-lsj" id="TQi-bC-h85"/>
+                        <outlet property="addressField" destination="SCa-LE-lsj" id="TQi-bC-h85"/>
                         <outlet property="mapView" destination="bz4-Id-oVa" id="38c-ZL-6k8"/>
                         <outlet property="nameTextField" destination="rKk-Pa-v7F" id="daz-iV-R8u"/>
                         <outlet property="overallLabel" destination="G9P-J4-CUV" id="B35-e4-vdN"/>
                         <outlet property="schoolDailyLabel" destination="XKc-HJ-Ngp" id="QTd-Jw-O7e"/>
-                        <outlet property="schoolNameTextField" destination="ugH-kQ-kGV" id="7me-m0-sv7"/>
                         <outlet property="schoolOverallLabel" destination="ydc-da-7TT" id="pJ2-Id-gdd"/>
+                        <outlet property="schoolSearch" destination="ugH-kQ-kGV" id="7me-m0-sv7"/>
                         <outlet property="tableView" destination="fMe-xi-x79" id="gLt-En-J6D"/>
                     </connections>
                 </viewController>
@@ -716,7 +716,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vMz-48-cdW"/>
+        <segue reference="tnc-Om-a2G"/>
         <segue reference="UdG-wp-r23"/>
     </inferredMetricsTieBreakers>
     <resources>
