@@ -8,38 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		75C7B1BDFA837CF2B0A4B9E9 /* Pods_SchoolVsSchoolTrivia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B9239F4646987D178F5025 /* Pods_SchoolVsSchoolTrivia.framework */; };
-		DB64F7B62819B4880027CEC1 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB64F7B52819B4880027CEC1 /* APIKeys.swift */; };
 		DB64F7B82819B5530027CEC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB64F7B72819B5530027CEC1 /* GoogleService-Info.plist */; };
-		DB7340B2281C74BA007DACC3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B1281C74BA007DACC3 /* User.swift */; };
-		DB7340B4281C788D007DACC3 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B3281C788D007DACC3 /* Users.swift */; };
-		DB7340B7281C7ADA007DACC3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B6281C7ADA007DACC3 /* Game.swift */; };
-		DB7340B9281C7B15007DACC3 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B8281C7B15007DACC3 /* Games.swift */; };
+		DB7340B2281C74BA007DACC3 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B1281C74BA007DACC3 /* AppUser.swift */; };
+		DB7340B4281C788D007DACC3 /* AppUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340B3281C788D007DACC3 /* AppUsers.swift */; };
+		DB7340BB281C8C32007DACC3 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340BA281C8C32007DACC3 /* UserTableViewCell.swift */; };
+		DB7340BD281C93B4007DACC3 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7340BC281C93B4007DACC3 /* PlayViewController.swift */; };
 		DBC0575B2819B1CE009FDA7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */; };
 		DBC0575D2819B1CE009FDA7E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */; };
 		DBC0575F2819B1CE009FDA7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC0575E2819B1CE009FDA7E /* LoginViewController.swift */; };
 		DBC057622819B1CE009FDA7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC057602819B1CE009FDA7E /* Main.storyboard */; };
 		DBC057642819B1D5009FDA7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBC057632819B1D5009FDA7E /* Assets.xcassets */; };
 		DBC057672819B1D5009FDA7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC057652819B1D5009FDA7E /* LaunchScreen.storyboard */; };
-		DBD900712819E027003ED407 /* SchoolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900702819E027003ED407 /* SchoolListViewController.swift */; };
-		DBD900732819E277003ED407 /* SchoolTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900722819E277003ED407 /* SchoolTableViewCell.swift */; };
-		DBD900752819E733003ED407 /* MyStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900742819E733003ED407 /* MyStuffViewController.swift */; };
-		DBD900772819E776003ED407 /* SchoolDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900762819E776003ED407 /* SchoolDetailViewController.swift */; };
-		DBD900792819F330003ED407 /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900782819F330003ED407 /* School.swift */; };
+		DBD900712819E027003ED407 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900702819E027003ED407 /* UserListViewController.swift */; };
 		DBD9007B281A002C003ED407 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9007A281A002C003ED407 /* UIViewController+alert.swift */; };
-		DBD9007D281A01E1003ED407 /* Schools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9007C281A01E1003ED407 /* Schools.swift */; };
-		DBD9007F281ADEA8003ED407 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9007E281ADEA8003ED407 /* Student.swift */; };
-		DBD90081281AE3AD003ED407 /* Students.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD90080281AE3AD003ED407 /* Students.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		63C9A66CDC79B65C7334F724 /* Pods-SchoolVsSchoolTrivia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolVsSchoolTrivia.debug.xcconfig"; path = "Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia.debug.xcconfig"; sourceTree = "<group>"; };
 		97B9239F4646987D178F5025 /* Pods_SchoolVsSchoolTrivia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolVsSchoolTrivia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB64F7B52819B4880027CEC1 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		DB64F7B72819B5530027CEC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DB7340B1281C74BA007DACC3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		DB7340B3281C788D007DACC3 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
-		DB7340B6281C7ADA007DACC3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		DB7340B8281C7B15007DACC3 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
+		DB7340B1281C74BA007DACC3 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		DB7340B3281C788D007DACC3 /* AppUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUsers.swift; sourceTree = "<group>"; };
+		DB7340BA281C8C32007DACC3 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		DB7340BC281C93B4007DACC3 /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		DBC057572819B1CE009FDA7E /* SchoolVsSchoolTrivia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolVsSchoolTrivia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -48,15 +39,8 @@
 		DBC057632819B1D5009FDA7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBC057662819B1D5009FDA7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBC057682819B1D5009FDA7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DBD900702819E027003ED407 /* SchoolListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolListViewController.swift; sourceTree = "<group>"; };
-		DBD900722819E277003ED407 /* SchoolTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolTableViewCell.swift; sourceTree = "<group>"; };
-		DBD900742819E733003ED407 /* MyStuffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStuffViewController.swift; sourceTree = "<group>"; };
-		DBD900762819E776003ED407 /* SchoolDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailViewController.swift; sourceTree = "<group>"; };
-		DBD900782819F330003ED407 /* School.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = School.swift; sourceTree = "<group>"; };
+		DBD900702819E027003ED407 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		DBD9007A281A002C003ED407 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
-		DBD9007C281A01E1003ED407 /* Schools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schools.swift; sourceTree = "<group>"; };
-		DBD9007E281ADEA8003ED407 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
-		DBD90080281AE3AD003ED407 /* Students.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Students.swift; sourceTree = "<group>"; };
 		F7AB5538E29D70D610E1904A /* Pods-SchoolVsSchoolTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolVsSchoolTrivia.release.xcconfig"; path = "Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,7 +96,6 @@
 			children = (
 				DBC0575A2819B1CE009FDA7E /* AppDelegate.swift */,
 				DBC0575C2819B1CE009FDA7E /* SceneDelegate.swift */,
-				DB64F7B52819B4880027CEC1 /* APIKeys.swift */,
 				DBD90082281AF7DD003ED407 /* Models */,
 				DBD90083281AF7EA003ED407 /* Controllers */,
 				DBD90085281AF842003ED407 /* Views */,
@@ -129,14 +112,8 @@
 		DBD90082281AF7DD003ED407 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DBD900782819F330003ED407 /* School.swift */,
-				DBD9007C281A01E1003ED407 /* Schools.swift */,
-				DBD9007E281ADEA8003ED407 /* Student.swift */,
-				DBD90080281AE3AD003ED407 /* Students.swift */,
-				DB7340B1281C74BA007DACC3 /* User.swift */,
-				DB7340B3281C788D007DACC3 /* Users.swift */,
-				DB7340B6281C7ADA007DACC3 /* Game.swift */,
-				DB7340B8281C7B15007DACC3 /* Games.swift */,
+				DB7340B1281C74BA007DACC3 /* AppUser.swift */,
+				DB7340B3281C788D007DACC3 /* AppUsers.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,9 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				DBC0575E2819B1CE009FDA7E /* LoginViewController.swift */,
-				DBD900702819E027003ED407 /* SchoolListViewController.swift */,
-				DBD900762819E776003ED407 /* SchoolDetailViewController.swift */,
-				DBD900742819E733003ED407 /* MyStuffViewController.swift */,
+				DBD900702819E027003ED407 /* UserListViewController.swift */,
+				DB7340BC281C93B4007DACC3 /* PlayViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -163,7 +139,7 @@
 		DBD90085281AF842003ED407 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DBD900722819E277003ED407 /* SchoolTableViewCell.swift */,
+				DB7340BA281C8C32007DACC3 /* UserTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -302,23 +278,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBD900752819E733003ED407 /* MyStuffViewController.swift in Sources */,
-				DBD90081281AE3AD003ED407 /* Students.swift in Sources */,
 				DBC0575F2819B1CE009FDA7E /* LoginViewController.swift in Sources */,
-				DBD900772819E776003ED407 /* SchoolDetailViewController.swift in Sources */,
-				DBD900732819E277003ED407 /* SchoolTableViewCell.swift in Sources */,
-				DBD900792819F330003ED407 /* School.swift in Sources */,
-				DB7340B2281C74BA007DACC3 /* User.swift in Sources */,
-				DB7340B4281C788D007DACC3 /* Users.swift in Sources */,
+				DB7340B2281C74BA007DACC3 /* AppUser.swift in Sources */,
+				DB7340B4281C788D007DACC3 /* AppUsers.swift in Sources */,
+				DB7340BD281C93B4007DACC3 /* PlayViewController.swift in Sources */,
 				DBC0575B2819B1CE009FDA7E /* AppDelegate.swift in Sources */,
-				DB7340B9281C7B15007DACC3 /* Games.swift in Sources */,
-				DB64F7B62819B4880027CEC1 /* APIKeys.swift in Sources */,
-				DBD9007F281ADEA8003ED407 /* Student.swift in Sources */,
+				DB7340BB281C8C32007DACC3 /* UserTableViewCell.swift in Sources */,
 				DBC0575D2819B1CE009FDA7E /* SceneDelegate.swift in Sources */,
-				DBD9007D281A01E1003ED407 /* Schools.swift in Sources */,
-				DBD900712819E027003ED407 /* SchoolListViewController.swift in Sources */,
+				DBD900712819E027003ED407 /* UserListViewController.swift in Sources */,
 				DBD9007B281A002C003ED407 /* UIViewController+alert.swift in Sources */,
-				DB7340B7281C7ADA007DACC3 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
