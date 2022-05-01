@@ -19,8 +19,9 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var gameStatusMessageLabel: UILabel!
     
     let user = AppUser()
-    
-    // this is where api and json comes in
+//    var db: Firestore!
+    var users = AppUsers()
+
     var wordsToGuess: [String] = ["ALEKSEJ"]
     var urlString = "https://random-word-api.herokuapp.com/word?length=5"
     var wordToGuess = ""
@@ -92,12 +93,10 @@ class PlayViewController: UIViewController {
     
     func updateAfterWin() {
         getData()
-        // user save data
-        user.avgGuesses = Double(((user.avgGuesses * Double(user.gamesPlayed)) + Double(guessCount)) / Double((user.gamesPlayed + 1)))
-        user.gamesPlayed += 1
-        guessedLetterTextField.isEnabled = false
-        guessLetterButton.isEnabled = false
-        playAgainButton.isHidden = false
+        users.loadWin(guessCount: guessCount)
+        self.guessedLetterTextField.isEnabled = false
+        self.guessLetterButton.isEnabled = false
+        self.playAgainButton.isHidden = false
     }
     
     func drawFlowerAndPlaySound(currentLetterGuessed: String) {

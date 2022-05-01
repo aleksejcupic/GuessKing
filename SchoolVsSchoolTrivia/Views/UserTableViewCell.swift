@@ -16,7 +16,7 @@ class UserTableViewCell: UITableViewCell {
         didSet {
             nameLabel.text = user.displayName
             gamesPlayedLabel.text = "\(user.gamesPlayed)"
-            avgGuessesLabel.text = "\(user.avgGuesses)"
+            avgGuessesLabel.text = String(format: "%.2f", user.avgGuesses)
         }
     }
 }

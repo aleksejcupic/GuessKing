@@ -20,7 +20,6 @@
 		DBC057642819B1D5009FDA7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBC057632819B1D5009FDA7E /* Assets.xcassets */; };
 		DBC057672819B1D5009FDA7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC057652819B1D5009FDA7E /* LaunchScreen.storyboard */; };
 		DBD900712819E027003ED407 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD900702819E027003ED407 /* UserListViewController.swift */; };
-		DBD9007B281A002C003ED407 /* UIViewController+alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD9007A281A002C003ED407 /* UIViewController+alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +39,6 @@
 		DBC057662819B1D5009FDA7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBC057682819B1D5009FDA7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBD900702819E027003ED407 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
-		DBD9007A281A002C003ED407 /* UIViewController+alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+alert.swift"; sourceTree = "<group>"; };
 		F7AB5538E29D70D610E1904A /* Pods-SchoolVsSchoolTrivia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolVsSchoolTrivia.release.xcconfig"; path = "Target Support Files/Pods-SchoolVsSchoolTrivia/Pods-SchoolVsSchoolTrivia.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,7 +129,6 @@
 		DBD90084281AF825003ED407 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				DBD9007A281A002C003ED407 /* UIViewController+alert.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -286,7 +283,6 @@
 				DB7340BB281C8C32007DACC3 /* UserTableViewCell.swift in Sources */,
 				DBC0575D2819B1CE009FDA7E /* SceneDelegate.swift in Sources */,
 				DBD900712819E027003ED407 /* UserListViewController.swift in Sources */,
-				DBD9007B281A002C003ED407 /* UIViewController+alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

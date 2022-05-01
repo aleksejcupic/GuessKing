@@ -17,13 +17,6 @@ class AppUser {
     var userSince: Date
     var documentID: String
     
-    
-//    var db: Firestore!
-//
-//    init() {
-//        db = Firestore.firestore()
-//    }
-    
     var dictionary: [String: Any] {
         let timeIntervalDate = userSince.timeIntervalSince1970
         return ["displayName": displayName, "email": email, "gamesPlayed": gamesPlayed, "avgGuesses": avgGuesses, "userSince": timeIntervalDate]
@@ -83,62 +76,4 @@ class AppUser {
             }
         }
     }
-    
-//    func saveData(completion: @escaping (Bool) -> ()) {
-//        let db = Firestore.firestore()
-//        let userRef = db.collection("users").document(documentID)
-//        userRef.getDocument { (document, error) in
-//            guard error == nil else {
-//                print("ERROR: could not access document for \(self.documentID)")
-//                return completion(false)
-//            }
-//            let dataToSave: [String: Any] = self.dictionary
-//            db.collection("users").document(self.documentID).setData(dataToSave) { (error) in
-//                guard error == nil else {
-//                    print("ERROR: \(error!.localizedDescription) could not save data for \(self.documentID)")
-//                    return completion(false)
-//                }
-//                return completion(true)
-//            }
-//        }
-//    }
-    
-//    func loadData(completed: @escaping ()-> ()) {
-//        db.collection("users").addSnapshotListener { (querySnapshot, error) in
-//            guard error == nil else {
-//                print(" ERROR: adding snapshot listener \(error!.localizedDescription)")
-//                return completed()
-//            }
-//            self.user = AppUser() // clean out to load new data
-//            // querySnapshot!.documents.count documents in the snapshot
-//            for document in querySnapshot!.documents {
-//                // make sure to have a dictionary initializer in the Spot class
-//                let review = Review(dictionary: document.data())
-//                review.documentID = document.documentID
-//                self.reviewArray.append(review)
-//            }
-//            completed()
-//        }
-//    }
-    
-    
-    // OLD VERSION
-    
-//    func loadData(user: User, completed: @escaping (Bool) -> ()) {
-//        var user = AppUser()
-//        let db = Firestore.firestore()
-//        db.collection("users").getDocuments { (querySnapshot, error) in
-//            if error == nil {
-//                DispatchQueue.main.async {
-//                    self.user = querySnapshot.documents.map {
-//                        dictionary in return AppUser(displayName: dictionary["displayName"] as! String? ?? "", email: dictionary["email"] as! String? ?? "", gamesPlayed: dictionary["gamesPlayed"] as! Int? ?? 0, avgGuesses: dictionary["avgGuesses"] as! Double? ?? 0.0, userSince: dictionary["userSince"] as! Date? ?? Date(), documentID: dictionary.documentID)
-//                    }
-//                }
-//            } else {
-//                print("ERROR: adding snapshot listener \(error!.localizedDescription)")
-//                return completed(false)
-//            }
-//        }
-//    }
 }
-
