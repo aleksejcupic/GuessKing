@@ -63,7 +63,6 @@ class PlayViewController: UIViewController {
     }
     
     func updateUIAfterGuess() {
-        // dismisses the keyboard
         guessedLetterTextField.text! = ""
         guessLetterButton.isEnabled = false
     }
@@ -159,10 +158,10 @@ class PlayViewController: UIViewController {
         updateUIAfterGuess()
     }
     
-//    @IBAction func doneKeyPressed(_ sender: UITextField) {
-//        guessALetter()
-//        updateUIAfterGuess()
-//    }
+    @IBAction func doneKeyPressed(_ sender: UITextField) {
+        guessALetter()
+        updateUIAfterGuess()
+    }
     
     @IBAction func playAgainButtonPressed(_ sender: UIButton) {
         play()
