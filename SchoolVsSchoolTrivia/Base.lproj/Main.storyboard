@@ -234,7 +234,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nez-eW-Gks">
-                                <rect key="frame" x="0.0" y="355.5" width="414" height="457.5"/>
+                                <rect key="frame" x="0.0" y="355.5" width="414" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="qfM-hJ-25c"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_ _ _ _ _" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc2-2m-bdn">
                                 <rect key="frame" x="20" y="109" width="374" height="21"/>
@@ -256,7 +259,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="dTI-E3-qtZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                 <connections>
                                     <action selector="doneKeyPressed:" destination="Wbw-rG-X5Z" eventType="editingDidEnd" id="fwQ-Gv-hCh"/>
@@ -275,7 +278,6 @@
                             <constraint firstItem="wdv-1K-qfl" firstAttribute="trailing" secondItem="Nez-eW-Gks" secondAttribute="trailing" id="ZBW-ES-qub"/>
                             <constraint firstItem="wdv-1K-qfl" firstAttribute="trailing" secondItem="3yA-WN-R89" secondAttribute="trailing" constant="69" id="daQ-0f-b0H"/>
                             <constraint firstItem="oOy-uT-RBL" firstAttribute="top" secondItem="uOS-1P-SVe" secondAttribute="bottom" constant="19" id="eVF-Vm-42Y"/>
-                            <constraint firstItem="wdv-1K-qfl" firstAttribute="bottom" secondItem="Nez-eW-Gks" secondAttribute="bottom" id="edU-PX-N5J"/>
                             <constraint firstItem="Nc2-2m-bdn" firstAttribute="top" secondItem="wdv-1K-qfl" secondAttribute="top" constant="21" id="ef4-86-SQd"/>
                             <constraint firstItem="oOy-uT-RBL" firstAttribute="top" secondItem="RH8-wR-Fnd" secondAttribute="top" constant="285" id="gGc-aD-y3B"/>
                             <constraint firstItem="oOy-uT-RBL" firstAttribute="leading" secondItem="Nc2-2m-bdn" secondAttribute="leading" id="juw-tx-RHE"/>
@@ -300,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WfH-2h-Md2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3306" y="84"/>
+            <point key="canvasLocation" x="3305.7971014492755" y="83.705357142857139"/>
         </scene>
     </scenes>
     <resources>

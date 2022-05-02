@@ -43,29 +43,40 @@ class AppUsers {
                 return
             }
             for document in querySnapshot!.documents {
-                let user = AppUser(dictionary: document.data())
-                user.documentID = document.documentID
-                user.gamesPlayed += 1
-                user.avgGuesses = Double(((user.avgGuesses * Double(user.gamesPlayed)) + Double(guessCount)) / Double((user.gamesPlayed + 1)))
-                let userRef = db.collection("users").document(user.documentID)
-                userRef.getDocument { (document, error) in
-                    guard document?.exists == false else {
-                        print("document for user \(user.documentID) exists")
-                        let dataToSave: [String: Any] = user.dictionary
-                        db.collection("users").document(user.documentID).setData(dataToSave) { (error) in
-                            guard error == nil else {
-                                print("ERROR: \(error!.localizedDescription) could not save data for \(user.documentID)")
-                                return
-                            }
-                        }
-                        return
-                    }
+                let seconds = 10.0
+                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                    // Put your code which should be executed with a delay here
+                    let user = AppUser(dictionary: document.data())
+                    user.documentID = document.documentID
+                    user.avgGuesses = Double(((user.avgGuesses * Double(user.gamesPlayed)) + Double(guessCount)) / Double((user.gamesPlayed + 1)))
+                    user.gamesPlayed += 1
+                    let dataToSave: [String: Any] = user.dictionary
+                    //                    print(user.dictionary)
+                    //                    print("document for user \(user.documentID) exists")
+                    db.collection("users").document(user.documentID).setData(dataToSave)
                 }
+                //                    { (error) in
+                //                        guard error == nil else {
+                //                            print("ERROR: \(error!.localizedDescription) could not save data for \(user.documentID)")
+                //                            return
+                //                        }
             }
+            
+            //                let userRef = db.collection("users").document(user.documentID)
+            //                userRef.getDocument { (document, error) in
+            //                    guard document?.exists == false else {
+            //                        print("document for user \(user.documentID) exists")
+            //
+            //                        }
+            //                        return
+            //                    }
         }
-        //    return
+        //                break
     }
-    //return
-    //}
-    //}
 }
+//    return
+
+//return
+//}
+//}
+

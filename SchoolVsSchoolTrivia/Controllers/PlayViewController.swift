@@ -32,8 +32,7 @@ class PlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
-        let text = guessedLetterTextField.text!
-        guessLetterButton.isEnabled = !(text.isEmpty)
+        guessLetterButton.isEnabled = false
         wordToGuess = wordsToGuess[currentWordIndex]
     }
     
@@ -82,10 +81,13 @@ class PlayViewController: UIViewController {
     
     func updateAfterWin() {
         getData()
-        users.loadWin(guessCount: guessCount)
+        guard guessCount == 0 else {
+            users.loadWin(guessCount: guessCount)
+            self.playAgainButton.isHidden = false
+            return
+        }
 //        self.guessedLetterTextField.isEnabled = false
 //        self.guessLetterButton.isEnabled = false
-        self.playAgainButton.isHidden = false
     }
     
     func animationAndSound(currentLetterGuessed: String) {
@@ -166,6 +168,7 @@ class PlayViewController: UIViewController {
     @IBAction func playAgainButtonPressed(_ sender: UIButton) {
         play()
     }
+    
     @IBAction func guessedLetterTextField(_ sender: UITextField) {
         sender.text = String(sender.text?.last ?? " ").trimmingCharacters(in: .whitespaces).lowercased()
         guessLetterButton.isEnabled = true

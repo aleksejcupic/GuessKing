@@ -19,7 +19,7 @@ class AppUser {
     
     var dictionary: [String: Any] {
         let timeIntervalDate = userSince.timeIntervalSince1970
-        return ["displayName": displayName, "email": email, "gamesPlayed": gamesPlayed, "avgGuesses": avgGuesses, "userSince": timeIntervalDate]
+        return ["displayName": displayName, "email": email, "gamesPlayed": gamesPlayed, "avgGuesses": avgGuesses, "userSince": timeIntervalDate, "documentID": documentID]
     }
     
     init(displayName: String, email: String, gamesPlayed: Int, avgGuesses: Double, userSince: Date, documentID: String) {
@@ -33,8 +33,9 @@ class AppUser {
     
     convenience init() {
         let displayName = Auth.auth().currentUser?.uid ?? ""
-        let email = Auth.auth().currentUser?.email ?? "unknown email"
-        self.init(displayName: displayName, email: email, gamesPlayed: 0, avgGuesses: 0, userSince: Date(), documentID: "")
+        let email = Auth.auth().currentUser?.email ?? ""
+        let documentID = Auth.auth().currentUser?.uid ?? ""
+        self.init(displayName: displayName, email: email, gamesPlayed: 0, avgGuesses: 0, userSince: Date(), documentID: documentID)
     }
     
     convenience init(user: User) {
@@ -50,7 +51,8 @@ class AppUser {
         let avgGuesses = dictionary["avgGuesses"] as! Double? ?? 0.0
         let timeIntervalDate = dictionary["userSince"] as! TimeInterval? ?? TimeInterval()
         let userSince = Date(timeIntervalSince1970: timeIntervalDate)
-        self.init(displayName: displayName, email: email, gamesPlayed: gamesPlayed, avgGuesses: avgGuesses, userSince: userSince, documentID: "")
+        let documentID = dictionary["documentID"] as! String? ?? ""
+        self.init(displayName: displayName, email: email, gamesPlayed: gamesPlayed, avgGuesses: avgGuesses, userSince: userSince, documentID: documentID)
     }
     
     func saveIfNewUser(completion: @escaping (Bool) -> ()) {
