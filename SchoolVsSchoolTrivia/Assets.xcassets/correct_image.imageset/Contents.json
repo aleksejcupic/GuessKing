@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "flower2.png",
+      "filename" : "correct.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "flower2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "flower2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

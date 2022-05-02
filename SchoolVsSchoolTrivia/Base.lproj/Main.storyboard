@@ -129,7 +129,7 @@
                                 </items>
                             </toolbar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Games Played" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aci-9V-xz3">
-                                <rect key="frame" x="226" y="88" width="98" height="18"/>
+                                <rect key="frame" x="220" y="88" width="98" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -142,9 +142,10 @@
                             <constraint firstItem="tze-yf-lFJ" firstAttribute="baseline" secondItem="aci-9V-xz3" secondAttribute="baseline" id="3ia-mh-mSX"/>
                             <constraint firstItem="y5d-Rd-0f7" firstAttribute="leading" secondItem="RsX-1r-Yee" secondAttribute="leading" id="CtG-mK-4iU"/>
                             <constraint firstAttribute="bottomMargin" secondItem="KaN-Pc-BDU" secondAttribute="bottom" constant="-5" id="EC1-Ul-ury"/>
+                            <constraint firstItem="vYG-PF-7Yh" firstAttribute="trailing" secondItem="RsX-1r-Yee" secondAttribute="trailing" constant="4" id="Hyp-lO-hxv"/>
                             <constraint firstAttribute="trailing" secondItem="aci-9V-xz3" secondAttribute="trailing" constant="79" id="MPQ-Da-yZs"/>
                             <constraint firstItem="y5d-Rd-0f7" firstAttribute="leading" secondItem="KaN-Pc-BDU" secondAttribute="leading" id="Ole-cj-qzM"/>
-                            <constraint firstItem="vYG-PF-7Yh" firstAttribute="leading" secondItem="aci-9V-xz3" secondAttribute="trailing" constant="8" symbolic="YES" id="QCz-b8-FAI"/>
+                            <constraint firstItem="vYG-PF-7Yh" firstAttribute="leading" secondItem="aci-9V-xz3" secondAttribute="trailing" constant="10" id="QCz-b8-FAI"/>
                             <constraint firstItem="tze-yf-lFJ" firstAttribute="leading" secondItem="g48-2B-bX0" secondAttribute="leadingMargin" id="UKC-Nx-wWF"/>
                             <constraint firstItem="tze-yf-lFJ" firstAttribute="baseline" secondItem="vYG-PF-7Yh" secondAttribute="baseline" id="UKU-ez-tuJ"/>
                             <constraint firstItem="y5d-Rd-0f7" firstAttribute="top" secondItem="RsX-1r-Yee" secondAttribute="top" constant="30" id="gMY-eo-CLC"/>
@@ -226,14 +227,14 @@
                                     <action selector="playAgainButtonPressed:" destination="Wbw-rG-X5Z" eventType="touchUpInside" id="D8J-Of-SUj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 guesses" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOy-uT-RBL">
-                                <rect key="frame" x="20" y="285" width="374" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 guesses" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOy-uT-RBL">
+                                <rect key="frame" x="20" y="285" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nez-eW-Gks">
-                                <rect key="frame" x="0.0" y="356" width="414" height="457"/>
+                                <rect key="frame" x="0.0" y="355.5" width="414" height="457.5"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_ _ _ _ _" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nc2-2m-bdn">
                                 <rect key="frame" x="20" y="109" width="374" height="21"/>
@@ -249,17 +250,18 @@
                                     <action selector="guessLetterButtonPressed:" destination="Wbw-rG-X5Z" eventType="touchUpInside" id="UHh-eX-Zak"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a7Z-xP-ho3">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a7Z-xP-ho3">
                                 <rect key="frame" x="81" y="158" width="41" height="34"/>
                                 <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="41" id="dTI-E3-qtZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                 <connections>
                                     <action selector="doneKeyPressed:" destination="Wbw-rG-X5Z" eventType="editingDidEnd" id="fwQ-Gv-hCh"/>
                                     <action selector="guessedLetterFieldChanged:" destination="Wbw-rG-X5Z" eventType="editingDidEnd" id="usK-hG-VNH"/>
+                                    <action selector="guessedLetterTextField:" destination="Wbw-rG-X5Z" eventType="editingChanged" id="BnI-DQ-Msv"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -298,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WfH-2h-Md2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2286.9565217391305" y="1129.6875"/>
+            <point key="canvasLocation" x="3306" y="84"/>
         </scene>
     </scenes>
     <resources>

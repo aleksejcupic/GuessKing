@@ -36,7 +36,6 @@ class AppUsers {
     }
     
     func loadWin(guessCount: Int) {
-        print("LOADING NEW WIN")
         let db = Firestore.firestore()
         db.collection("users").addSnapshotListener { (querySnapshot, error) in
             guard error == nil else {
@@ -50,10 +49,6 @@ class AppUsers {
                 user.avgGuesses = Double(((user.avgGuesses * Double(user.gamesPlayed)) + Double(guessCount)) / Double((user.gamesPlayed + 1)))
                 let userRef = db.collection("users").document(user.documentID)
                 userRef.getDocument { (document, error) in
-                    guard error == nil else {
-                        print("ERROR: could not access docment for \(user.documentID)")
-                        return
-                    }
                     guard document?.exists == false else {
                         print("document for user \(user.documentID) exists")
                         let dataToSave: [String: Any] = user.dictionary
@@ -62,15 +57,15 @@ class AppUsers {
                                 print("ERROR: \(error!.localizedDescription) could not save data for \(user.documentID)")
                                 return
                             }
-                            return
                         }
                         return
                     }
                 }
-                break
             }
-            return
         }
-        return
+        //    return
     }
+    //return
+    //}
+    //}
 }
